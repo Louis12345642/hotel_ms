@@ -154,38 +154,24 @@
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                <form class="in-product-form grid grid-cols-1" action="">
+                <form class="in-product-form grid grid-cols-1" action="../routes/registerRoomRoute.php" method="POST">
     <label class="text-sm font-extrabold" for="Product Name"
-      >Product Name</label
+      >Room Number</label
     >
     <input
       class="text-xs p-1 text-gray-500"
       type="text"
-      placeholder="product name"
+      placeholder="room number..."
+      name="room_number"
     />
     <label class="text-sm font-extrabold" for="Serial Number"
-      >Serial Number</label
+      >status</label
     >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="serial number"
-    />
-    <label class="text-sm font-extrabold" for="Quantity">Quantity</label>
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="quantity"
-    />
-    <label class="text-sm font-extrabold" for="Product Name"
-      >Product description</label
-    >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="description"
-    />
-
+    <select name="status" id="status" class="text-xs p-1 text-gray-500">
+        <option name="status" value="booked">Booked</option>
+        <option name="status" value="empty">empty</option>
+    </select>
+  
     <button class="btn-component text-sm text-bold">submit</button>
   </form>
 

@@ -1,16 +1,16 @@
 <?php
-include_once "../model/User.php";
+include_once "../model/Room.php";
 
 /*
-* Description: this controller class contains all the crude operation methods belong to the user resource
+* Description: this controller class contains all the crude operation methods belong to the rooms resource
 * 
 *
 */
 
-class userController
+class roomsController
 {
     /*
-* index(): this methods gets all the users from the database 
+* index(): this methods gets all the rooms from the database 
 * @return: json object
 *
 */
@@ -27,13 +27,13 @@ class userController
     }
 
         /*
-* store(): this methods stores a new user in the database
+* store(): this methods stores a new room in the database
 * @return: null
 *
 */
-public function store($name,$email,$password){
-    $user = new User();
-    $user->create($name,$email,$password);
+public function store($room_number,$status){
+$room = new Room();
+    $room->create($room_number,$status);
     echo "user created";     
 }
 
@@ -46,8 +46,8 @@ public function store($name,$email,$password){
 
 public function delete($id){
     //getting the user instance
-    $user = new User();
-    $user->delete($id);
+    $room = new Room();
+    $room->delete($id);
 
 }
 
