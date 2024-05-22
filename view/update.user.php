@@ -1,11 +1,20 @@
 <?php
-//call the connection variable
+include_once "../controller/usersController.php";
 include_once "../database/connection.php";
 
+$userController = new userController();
+$id = $_GET['id'];
 $DB = new Db_connection();
 $conn = $DB->connect();
+$sql = "SELECT * FROM `persons` WHERE id=$id;";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
 
+$user = mysqli_fetch_assoc($result);
 
+$name = $user['name'];
+$email = $user['email'];
+$password=$user['password'];
 
 
 ?>
@@ -108,7 +117,7 @@ $conn = $DB->connect();
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                        Admin User
+                      Update A user
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
@@ -166,56 +175,21 @@ $conn = $DB->connect();
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                    <!-- this is where the external code will be placed -->
+                    <form class="in-product-form grid grid-cols-1"  action="../routes/updateUserRoute.php?id=<?php echo $id?>" method="POST">
+                        <label class="text-sm font-extrabold" for="Name"> Name</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="product name" , name="name" value="<?php echo $name; ?>" />
+                        <label class="text-sm font-extrabold" for="Serial Number">Email</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Email.." , name="email" value="<?php echo $email;?>" />
+                        <label class="text-sm font-extrabold" for="Quantity">Password</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Password..." name="password" value="<?php echo $password; ?>" />
 
-                    <div>
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mr-16">
-                            <table class="w-full text-sm text-left text-gray-500">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-100 table-secondary">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">Name</th>
-                                        <th scope="col" class="px-6 py-3">Email</th>
+                        <button class="btn-component text-sm text-bold">submit</button>
+                    </form>
 
-                                        <th scope="col" class="px-6 py-3">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql = "SELECT * FROM `persons`";
-                                    $result = mysqli_query($conn, $sql);
-                                    //check whether there are the database
-                                    $resultCheck = mysqli_num_rows($result);
-                                    if ($resultCheck > 0) {
-                                        while ($user = mysqli_fetch_assoc($result)) {
+                    <script setup lang="ts"></script>
+                    <script></script>
+                    <style></style>
 
-                                            $id = $user['id'];
-
-                                            echo "<tr class='bg-white border-b'>" .
-                                                "<td class='px-6 py-4'>" . $user['name'] . "</td>" .
-                                                "<td class='px-6 py-4'>" . $user['email'] . "</td>" .
-                                                "<td class='px-6 py-4'>
-                                                <div class='flex gap-4'>
-                                                    <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
-                                                       <a href='../routes/deleteUser.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
-                                                    </div>
-                                                    <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
-                                                 <a href='../view/update.user.php?id=$id' ><img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' /></a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            " .
-                                                "</tr>";
-                                        }
-                                    }
-                                    ?>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                    </div>
 
 
                     <script setup lang="ts"></script>

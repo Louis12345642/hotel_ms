@@ -18,15 +18,15 @@ include "../database/connection.php";
 class User
 {
 
- 
+
     public function  create($name, $email, $password)
     {
 
         //connect to the database
         $db = new Db_connection();
-        $conn =$db->Connect();
+        $conn = $db->Connect();
 
-        $sql =" INSERT INTO `persons` ( `name`, `email`, `password`) VALUES ('$name', '$email', '$password');";
+        $sql = " INSERT INTO `persons` ( `name`, `email`, `password`) VALUES ('$name', '$email', '$password');";
 
         mysqli_query($conn, $sql);
     }
@@ -39,10 +39,23 @@ class User
 
         //connect to the database
         $db = new Db_connection();
-        $conn =$db->Connect();
+        $conn = $db->Connect();
 
-        $sql ="DELETE FROM `persons` WHERE `persons`.`id` = $id";
+        $sql = "DELETE FROM `persons` WHERE `persons`.`id` = $id";
 
         mysqli_query($conn, $sql);
+    }
+
+    //this method a update a single user using the id 
+
+    public function Update($id,$name,$email,$password)
+    {
+        //connect to the database
+        $db = new Db_connection();
+        $conn = $db->Connect();
+        $sql = "UPDATE `persons` SET `name` = '$name', `email` = '$email', `password` = '$password' WHERE `persons`.`id` = '$id';";
+        
+        mysqli_query($conn, $sql);
+        
     }
 }

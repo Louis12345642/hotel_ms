@@ -53,5 +53,16 @@ public function delete($id){
 
 
 
+ /*
+* update(): this method updates a user from the database using the id
+* @return: null
+*
+*/
+public function update($id,$name,$email,$password){
+
+    $user = new User();
+    $user->Update($id,$name,$email,$password);
+}
+
 }
 
