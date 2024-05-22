@@ -159,7 +159,7 @@
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                    <form class="in-product-form grid grid-cols-1"  action="../controller/usersController.php" method="POST">
+                    <form class="in-product-form grid grid-cols-1"  action="../routes/registerUser.php" method="POST">
                         <label class="text-sm font-extrabold" for="Name"> Name</label>
                         <input class="text-xs p-1 text-gray-500" type="text" placeholder="product name" , name="name" />
                         <label class="text-sm font-extrabold" for="Serial Number">Email</label>

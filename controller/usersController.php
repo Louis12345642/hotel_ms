@@ -34,23 +34,24 @@ class userController
 public function store($name,$email,$password){
     $user = new User();
     $user->create($name,$email,$password);
-    echo "user created";
-        
+    echo "user created";     
+}
+
+
+        /*
+* delete(): this deletes a user from the database using the id
+* @return: null
+*
+*/
+
+public function delete($id){
+    //getting the user instance
+    $user = new User();
+    $user->delete($id);
+
 }
 
 
 
 }
 
-//register a new user
-
-//registering a new user
-$name =$_POST["name"];
-$email = $_POST["email"];
-$password = $_POST["password"];
-//store a new user in the database
-$user = new userController();
-
-$user->store($name,$email,$password);
-header("Location: ../view/users.php");
-exit();

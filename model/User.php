@@ -30,4 +30,19 @@ class User
 
         mysqli_query($conn, $sql);
     }
+
+
+    //this method contact the sql command to delete a user from the database
+
+    public function  delete($id)
+    {
+
+        //connect to the database
+        $db = new Db_connection();
+        $conn =$db->Connect();
+
+        $sql ="DELETE FROM `persons` WHERE `persons`.`id` = $id";
+
+        mysqli_query($conn, $sql);
+    }
 }

@@ -188,6 +188,7 @@ $conn = $DB->connect();
                                     if ($resultCheck > 0) {
                                         while ($user = mysqli_fetch_assoc($result)) {
 
+                                            $id = $user['id'];
 
                                             echo "<tr class='bg-white border-b'>" .
                                                 "<td class='px-6 py-4'>" . $user['name'] . "</td>" .
@@ -195,7 +196,7 @@ $conn = $DB->connect();
                                                 "<td class='px-6 py-4'>
                                                 <div class='flex gap-4'>
                                                     <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
-                                                        <img class='w-4 h-4' src='../assets/icons/trash.png' alt='' />
+                                                       <a href='../routes/deleteUser.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
                                                     </div>
                                                     <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
                                                         <img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' />
@@ -206,7 +207,6 @@ $conn = $DB->connect();
                                                 "</tr>";
                                         }
                                     }
-
                                     ?>
 
                                     </tr>
