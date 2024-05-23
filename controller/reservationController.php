@@ -48,8 +48,8 @@ class reservationController
     public function delete($id)
     {
         //getting the user instance
-        $room = new Room();
-        $room->delete($id);
+        $reservation = new Reservation();
+        $reservation->delete($id);
     }
 
 

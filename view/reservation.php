@@ -195,7 +195,7 @@ $conn = $DB->connect();
                                                 "<td class='px-6 py-4'>
                                                 <div class='flex gap-4'>
                                                     <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
-                                                       <a href='../routes/deleteUser.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
+                                                       <a href='../routes/deleteReservationRoute.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
                                                     </div>
                                                     <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
                                                  <a href='../view/update.reservation.php?id=$id' ><img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' /></a>

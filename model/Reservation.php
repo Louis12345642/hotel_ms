@@ -40,7 +40,7 @@ class Reservation
         $db = new Db_connection();
         $conn = $db->Connect();
 
-        $sql = "DELETE FROM `rooms` WHERE `rooms`.`id` = $id";
+        $sql = "DELETE FROM `reservations` WHERE `reservations`.`id` = $id";
 
         mysqli_query($conn, $sql);
     }
