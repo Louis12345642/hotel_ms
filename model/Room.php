@@ -48,14 +48,16 @@ class Room
 
     //this method a update a single user using the id 
 
-    public function Update($id,$name,$email,$password)
+    public function Update($id,$room_number,$status)
     {
         //connect to the database
         $db = new Db_connection();
         $conn = $db->Connect();
-        $sql = "UPDATE `persons` SET `name` = '$name', `email` = '$email', `password` = '$password' WHERE `persons`.`id` = '$id';";
+        $sql = "UPDATE `rooms` SET `room_number` = '$room_number', `status` = '$status' WHERE `rooms`.`id` = $id;";
         
         mysqli_query($conn, $sql);
         
     }
+
+    
 }

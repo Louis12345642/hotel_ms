@@ -58,11 +58,9 @@ public function delete($id){
 * @return: null
 *
 */
-public function update($id,$name,$email,$password){
-
-    $user = new User();
-    $user->Update($id,$name,$email,$password);
+public function update($id,$room_number,$status){
+    $room = new Room();
+    $room->Update($id,$room_number,$status);
 }
-
 }
 

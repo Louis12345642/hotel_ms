@@ -14,7 +14,6 @@ include "../database/connection.php";
 
 
 
-
 class User
 {
 

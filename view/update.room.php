@@ -1,12 +1,19 @@
 <?php
-//call the connection variable
 include_once "../database/connection.php";
 
+//get that id from the request parameter
+$id = $_GET["id"];
+//get a room by the id
 $DB = new Db_connection();
 $conn = $DB->connect();
+$sql = "SELECT * FROM `rooms` WHERE id=$id;";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
 
+$room = mysqli_fetch_assoc($result);
 
-
+$room_number = $room['room_number'];
+$status = $room['status'];
 
 ?>
 
@@ -108,7 +115,7 @@ $conn = $DB->connect();
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                        All Rooms
+                        Admin User
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
@@ -118,7 +125,7 @@ $conn = $DB->connect();
                             Dashboard
                             <div class="indicator-bar"></div>
                         </li>
-                        <li class="secondary-text"> <a href="dashboard.php">dashboard</a> </li>
+                        <li class="secondary-text">  <a href="dashboard.php">dashboard</a> </li>
                         <li class="secondary-text"> <a href="users.php">Users</a> </li>
                         <li class="secondary-text"> <a href="rooms.php">Rooms</a> </li>
                         <li class="secondary-text"> <a href="register.reservation.php">Add reservation</a> </li>
@@ -166,56 +173,32 @@ $conn = $DB->connect();
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                    <!-- this is where the external code will be placed -->
+                <form class="in-product-form grid grid-cols-1" action="../routes/updateRoomRoute.php?id=<?php echo $id;?>" method="POST">
+    <label class="text-sm font-extrabold" for="Product Name"
+      >Room Number</label
+    >
+    <input
+      class="text-xs p-1 text-gray-500"
+      type="text"
+      placeholder="room number..."
+      name="room_number",
+      value="<?php echo $room_number; ?>"
+    />
+    <label class="text-sm font-extrabold" for="Serial Number"
+      >status</label
+    >
+    <select  value="<?php echo $status; ?>" name="status" id="status" class="text-xs p-1 text-gray-500">
+        <option name="status">Booked</option>
+        <option name="status">empty</option>
+    </select>
+  
+    <button class="btn-component text-sm text-bold">submit</button>
+  </form>
 
-                    <div>
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mr-16">
-                            <table class="w-full text-sm text-left text-gray-500">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-100 table-secondary">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">Room Number</th>
-                                        <th scope="col" class="px-6 py-3">Status</th>
+<script setup lang="ts"></script>
+<script></script>
+<style></style>
 
-                                        <th scope="col" class="px-6 py-3">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql = "SELECT * FROM `rooms`";
-                                    $result = mysqli_query($conn, $sql);
-                                    //check whether there are the database
-                                    $resultCheck = mysqli_num_rows($result);
-                                    if ($resultCheck > 0) {
-                                        while ($room = mysqli_fetch_assoc($result)) {
-
-                                            $id = $room['id'];
-
-                                            echo "<tr class='bg-white border-b'>" .
-                                                "<td class='px-6 py-4'>" . $room['room_number'] . "</td>" .
-                                                "<td class='px-6 py-4'>" . $room['status'] . "</td>" .
-                                                "<td class='px-6 py-4'>
-                                                <div class='flex gap-4'>
-                                                    <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
-                                                       <a href='../routes/deleteRoomRoute.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
-                                                    </div>
-                                                    <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
-                                                 <a href='../view/update.room.php?id=$id' ><img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' /></a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            " .
-                                                "</tr>";
-                                        }
-                                    }
-                                    ?>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                    </div>
 
 
                     <script setup lang="ts"></script>
