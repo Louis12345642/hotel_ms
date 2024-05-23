@@ -1,3 +1,12 @@
+<?php
+//call the connection variable
+include_once "../database/connection.php";
+
+$DB = new Db_connection();
+$conn = $DB->connect();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +105,7 @@
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                        Admin User
+                    All Reservation
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
@@ -106,7 +115,7 @@
                             Dashboard
                             <div class="indicator-bar"></div>
                         </li>
-                        <li class="secondary-text">  <a href="dashboard.php">dashboard</a> </li>
+                        <li class="secondary-text"> <a href="dashboard.php">dashboard</a> </li>
                         <li class="secondary-text"> <a href="users.php">Users</a> </li>
                         <li class="secondary-text"> <a href="rooms.php">Rooms</a> </li>
                         <li class="secondary-text"> <a href="register.reservation.php">Add reservation</a> </li>
@@ -161,85 +170,44 @@
                             <table class="w-full text-sm text-left text-gray-500">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100 table-secondary">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3">Client's name</th>
                                         <th scope="col" class="px-6 py-3">Room Number</th>
-                                        <th scope="col" class="px-6 py-3">Email</th>
                                         <th scope="col" class="px-6 py-3">Price</th>
+                                        <th scope="col" class="px-6 py-3">Location</th>
+
                                         <th scope="col" class="px-6 py-3">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="bg-white border-b">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            Apple MacBook Pro 17"
-                                        </th>
-                                        <td class="px-6 py-4">20</td>
-                                        <td class="px-6 py-4">Laptop</td>
-                                        <td class="px-6 py-4">$2999</td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex gap-4">
-                                                <div class="font-medium text-white hover:underline bg-red-400 p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/trash.png" alt="" />
+                                    <?php
+                                    $sql = "SELECT * FROM `reservations`";
+                                    $result = mysqli_query($conn, $sql);
+                                    //check whether there are the database
+                                    $resultCheck = mysqli_num_rows($result);
+                                    if ($resultCheck > 0) {
+                                        while ($reservation = mysqli_fetch_assoc($result)) {
+
+                                            $id = $reservation['id'];
+
+                                            echo "<tr class='bg-white border-b'>" .
+                                                "<td class='px-6 py-4'>" . $reservation['room_number'] . "</td>" .
+                                                "<td class='px-6 py-4'>" . $reservation['price'] . "</td>" .
+                                                "<td class='px-6 py-4'>" . $reservation['location'] . "</td>" .
+                                                "<td class='px-6 py-4'>
+                                                <div class='flex gap-4'>
+                                                    <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
+                                                       <a href='../routes/deleteUser.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
+                                                    </div>
+                                                    <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
+                                                 <a href='../view/update.user.php?id=$id' ><img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' /></a>
+                                                    </div>
                                                 </div>
-                                                <div class="font-medium text-white hover:underline table-primary p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/file-edit.png" alt="" />
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b bg-gray-100">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            Microsoft Surface Pro
-                                        </th>
-                                        <td class="px-6 py-4">10</td>
-                                        <td class="px-6 py-4">Laptop PC</td>
-                                        <td class="px-6 py-4">$1999</td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex gap-4">
-                                                <div class="font-medium text-white hover:underline bg-red-400 p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/trash.png" alt="" />
-                                                </div>
-                                                <div class="font-medium text-white hover:underline table-primary p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/file-edit.png" alt="" />
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="bg-white border-b">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            Magic Mouse 2
-                                        </th>
-                                        <td class="px-6 py-4">7</td>
-                                        <td class="px-6 py-4">Accessories</td>
-                                        <td class="px-6 py-4">$99</td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex gap-4">
-                                                <div class="font-medium text-white hover:underline bg-red-400 p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/trash.png" alt="" />
-                                                </div>
-                                                <div class="font-medium text-white hover:underline table-primary p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="../assets/icons/file-edit.png" alt="" />
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="border-b bg-gray-100">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            Google Pixel Phone
-                                        </th>
-                                        <td class="px-6 py-4">67</td>
-                                        <td class="px-6 py-4">Phone</td>
-                                        <td class="px-6 py-4">$799</td>
-                                        <td class="px-6 py-4">
-                                            <div class="flex gap-4">
-                                                <div class="font-medium text-white hover:underline bg-red-400 p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="/icons/trash.png" alt="" />
-                                                </div>
-                                                <div class="font-medium text-white hover:underline table-primary p-2 rounded-md">
-                                                    <img class="w-4 h-4" src="/icons/file-edit.png" alt="" />
-                                                </div>
-                                            </div>
-                                        </td>
+                                            </td>
+                                            " .
+                                                "</tr>";
+                                        }
+                                    }
+                                    ?>
+
                                     </tr>
                                 </tbody>
                             </table>
