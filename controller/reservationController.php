@@ -59,9 +59,9 @@ class reservationController
 * @return: null
 *
 */
-    public function update($id, $room_number, $status)
+    public function update($id, $room_number, $price,$location)
     {
-        $room = new Room();
-        $room->Update($id, $room_number, $status);
+        $reservation = new Reservation;
+        $reservation->Update($id, $room_number, $price,$location);
     }
 }

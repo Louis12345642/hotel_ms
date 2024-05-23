@@ -47,12 +47,12 @@ class Reservation
 
     //this method a update a single user using the id 
 
-    public function Update($id,$room_number,$status)
+    public function Update($id,$room_number,$price,$location)
     {
         //connect to the database
         $db = new Db_connection();
         $conn = $db->Connect();
-        $sql = "UPDATE `rooms` SET `room_number` = '$room_number', `status` = '$status' WHERE `rooms`.`id` = $id;";
+       $sql ="UPDATE `reservations` SET `price` = '$price', `room_number` = '$room_number', `location` = '$location' WHERE `reservations`.`id` = $id;";
         
         mysqli_query($conn, $sql);
         

@@ -1,10 +1,21 @@
 <?php
-//call the connection variable
+
+include_once "../controller/reservationController.php";
 include_once "../database/connection.php";
 
+$reservation = new reservationController();
+$id = $_GET['id'];
 $DB = new Db_connection();
 $conn = $DB->connect();
+$sql = "SELECT * FROM `reservations` WHERE id=$id;";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
 
+$reservation = mysqli_fetch_assoc($result);
+
+$room_number = $reservation['room_number'];
+$price = $reservation['price'];
+$location=$reservation['location'];
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +116,7 @@ $conn = $DB->connect();
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                    All Reservation
+                        Reservation
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
@@ -163,58 +174,21 @@ $conn = $DB->connect();
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                    <!-- this is where the external code will be placed -->
+                    <form class="in-product-form grid grid-cols-1"  action="../routes/updateReservationRoute.php?id=<?php echo $id;?>" method="POST">
+                        <label class="text-sm font-extrabold" for="Name"> Room Number</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Room Number" , name="room_number"  value="<?php echo $room_number; ?>"/>
+                        <label class="text-sm font-extrabold" for="Serial Number">Price</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Price.." , name="price" value=" <?php echo $price;?>" />
+                        <label class="text-sm font-extrabold" for="Quantity">Location</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Location..." name="location" value=" <?php echo $location;?>" />
 
-                    <div>
-                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mr-16">
-                            <table class="w-full text-sm text-left text-gray-500">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-100 table-secondary">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">Room Number</th>
-                                        <th scope="col" class="px-6 py-3">Price</th>
-                                        <th scope="col" class="px-6 py-3">Location</th>
+                        <button class="btn-component text-sm text-bold">submit</button>
+                    </form>
 
-                                        <th scope="col" class="px-6 py-3">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql = "SELECT * FROM `reservations`";
-                                    $result = mysqli_query($conn, $sql);
-                                    //check whether there are the database
-                                    $resultCheck = mysqli_num_rows($result);
-                                    if ($resultCheck > 0) {
-                                        while ($reservation = mysqli_fetch_assoc($result)) {
+                    <script setup lang="ts"></script>
+                    <script></script>
+                    <style></style>
 
-                                            $id = $reservation['id'];
-
-                                            echo "<tr class='bg-white border-b'>" .
-                                                "<td class='px-6 py-4'>" . $reservation['room_number'] . "</td>" .
-                                                "<td class='px-6 py-4'>" . $reservation['price'] . "</td>" .
-                                                "<td class='px-6 py-4'>" . $reservation['location'] . "</td>" .
-                                                "<td class='px-6 py-4'>
-                                                <div class='flex gap-4'>
-                                                    <div class='font-medium text-white hover:underline bg-red-400 p-2 rounded-md'>
-                                                       <a href='../routes/deleteUser.php?id=$id'>  <img class='w-4 h-4' src='../assets/icons/delete.png' alt='' />    </a>
-                                                    </div>
-                                                    <div class='font-medium text-white hover:underline table-primary p-2 rounded-md'>
-                                                 <a href='../view/update.reservation.php?id=$id' ><img class='w-4 h-4' src='../assets/icons/file-edit.png' alt='' /></a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            " .
-                                                "</tr>";
-                                        }
-                                    }
-                                    ?>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-
-                    </div>
 
 
                     <script setup lang="ts"></script>
