@@ -1,3 +1,8 @@
+<?php
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +111,7 @@
                             Dashboard
                             <div class="indicator-bar"></div>
                         </li>
-                        <li class="secondary-text">  <a href="dashboard.php">dashboard</a> </li>
+                        <li class="secondary-text"> <a href="dashboard.php">dashboard</a> </li>
                         <li class="secondary-text"> <a href="users.php">Users</a> </li>
                         <li class="secondary-text"> <a href="rooms.php">Rooms</a> </li>
                         <li class="secondary-text"> <a href="register.reservation.php">Add reservation</a> </li>
@@ -154,44 +159,20 @@
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                <form class="in-product-form grid grid-cols-1" action="">
-    <label class="text-sm font-extrabold" for="Product Name"
-      >Product Name</label
-    >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="product name"
-    />
-    <label class="text-sm font-extrabold" for="Serial Number"
-      >Serial Number</label
-    >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="serial number"
-    />
-    <label class="text-sm font-extrabold" for="Quantity">Quantity</label>
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="quantity"
-    />
-    <label class="text-sm font-extrabold" for="Product Name"
-      >Product description</label
-    >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="description"
-    />
+                    <form class="in-product-form grid grid-cols-1"  action="../routes/registerReservationRoute.php" method="POST">
+                        <label class="text-sm font-extrabold" for="Name"> Room Number</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Room Number" , name="room_number" />
+                        <label class="text-sm font-extrabold" for="Serial Number">Price</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Price.." , name="price" />
+                        <label class="text-sm font-extrabold" for="Quantity">Location</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Location..." name="location" />
 
-    <button class="btn-component text-sm text-bold">submit</button>
-  </form>
+                        <button class="btn-component text-sm text-bold">submit</button>
+                    </form>
 
-<script setup lang="ts"></script>
-<script></script>
-<style></style>
+                    <script setup lang="ts"></script>
+                    <script></script>
+                    <style></style>
 
 
 

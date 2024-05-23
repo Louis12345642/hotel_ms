@@ -37,7 +37,6 @@ $room = new Room();
     echo "user created";     
 }
 
-
         /*
 * delete(): this deletes a user from the database using the id
 * @return: null
@@ -50,7 +49,6 @@ public function delete($id){
     $room->delete($id);
 
 }
-
 
  
  /*

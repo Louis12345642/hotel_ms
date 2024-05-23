@@ -5,9 +5,6 @@ include_once "../database/connection.php";
 $DB = new Db_connection();
 $conn = $DB->connect();
 
-
-
-
 ?>
 
 <!DOCTYPE html>
