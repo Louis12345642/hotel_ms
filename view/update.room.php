@@ -15,6 +15,24 @@ $room = mysqli_fetch_assoc($result);
 $room_number = $room['room_number'];
 $status = $room['status'];
 
+
+include_once "../controller/usersController.php";
+
+$user = new userController();
+
+//get the id from cookie
+$user_id = $_COOKIE['user_id'];
+
+//check if the user is auth
+if ($user_id) {
+    //get the user info
+    $auth_user = $user->find($user_id);
+} else {
+    //redirect the user to the football
+    header("Location: /hotel_system");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +143,7 @@ $status = $room['status'];
                             Dashboard
                             <div class="indicator-bar"></div>
                         </li>
-                        <li class="secondary-text">  <a href="dashboard.php">dashboard</a> </li>
+                        <li class="secondary-text"> <a href="dashboard.php">dashboard</a> </li>
                         <li class="secondary-text"> <a href="users.php">Users</a> </li>
                         <li class="secondary-text"> <a href="rooms.php">Rooms</a> </li>
                         <li class="secondary-text"> <a href="register.reservation.php">Add reservation</a> </li>
@@ -173,31 +191,21 @@ $status = $room['status'];
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                <form class="in-product-form grid grid-cols-1" action="../routes/updateRoomRoute.php?id=<?php echo $id;?>" method="POST">
-    <label class="text-sm font-extrabold" for="Product Name"
-      >Room Number</label
-    >
-    <input
-      class="text-xs p-1 text-gray-500"
-      type="text"
-      placeholder="room number..."
-      name="room_number",
-      value="<?php echo $room_number; ?>"
-    />
-    <label class="text-sm font-extrabold" for="Serial Number"
-      >status</label
-    >
-    <select  value="<?php echo $status; ?>" name="status" id="status" class="text-xs p-1 text-gray-500">
-        <option name="status">Booked</option>
-        <option name="status">empty</option>
-    </select>
-  
-    <button class="btn-component text-sm text-bold">submit</button>
-  </form>
+                    <form class="in-product-form grid grid-cols-1" action="../routes/updateRoomRoute.php?id=<?php echo $id; ?>" method="POST">
+                        <label class="text-sm font-extrabold" for="Product Name">Room Number</label>
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="room number..." name="room_number" , value="<?php echo $room_number; ?>" />
+                        <label class="text-sm font-extrabold" for="Serial Number">status</label>
+                        <select value="<?php echo $status; ?>" name="status" id="status" class="text-xs p-1 text-gray-500">
+                            <option name="status">Booked</option>
+                            <option name="status">empty</option>
+                        </select>
 
-<script setup lang="ts"></script>
-<script></script>
-<style></style>
+                        <button class="btn-component text-sm text-bold">submit</button>
+                    </form>
+
+                    <script setup lang="ts"></script>
+                    <script></script>
+                    <style></style>
 
 
 

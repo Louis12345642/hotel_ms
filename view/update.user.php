@@ -14,7 +14,25 @@ $user = mysqli_fetch_assoc($result);
 
 $name = $user['name'];
 $email = $user['email'];
-$password=$user['password'];
+$password = $user['password'];
+
+
+include_once "../controller/usersController.php";
+
+$user = new userController();
+
+//get the id from cookie
+$user_id = $_COOKIE['user_id'];
+
+//check if the user is auth
+if ($user_id) {
+    //get the user info
+    $auth_user = $user->find($user_id);
+} else {
+    //redirect the user to the football
+    header("Location: /hotel_system");
+    exit();
+}
 
 
 ?>
@@ -117,7 +135,7 @@ $password=$user['password'];
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                      Update A user
+                        Update A user
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
@@ -175,11 +193,11 @@ $password=$user['password'];
 
                 <div class="grid justify-center grid-cols-1 pl-20">
 
-                    <form class="in-product-form grid grid-cols-1"  action="../routes/updateUserRoute.php?id=<?php echo $id?>" method="POST">
+                    <form class="in-product-form grid grid-cols-1" action="../routes/updateUserRoute.php?id=<?php echo $id ?>" method="POST">
                         <label class="text-sm font-extrabold" for="Name"> Name</label>
                         <input class="text-xs p-1 text-gray-500" type="text" placeholder="product name" , name="name" value="<?php echo $name; ?>" />
                         <label class="text-sm font-extrabold" for="Serial Number">Email</label>
-                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Email.." , name="email" value="<?php echo $email;?>" />
+                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Email.." , name="email" value="<?php echo $email; ?>" />
                         <label class="text-sm font-extrabold" for="Quantity">Password</label>
                         <input class="text-xs p-1 text-gray-500" type="text" placeholder="Password..." name="password" value="<?php echo $password; ?>" />
 

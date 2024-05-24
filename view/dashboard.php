@@ -3,7 +3,23 @@ include_once "../controller/usersController.php";
 
 $user = new userController();
 
-$all = $user->index();
+//get the id from cookie
+$user_id = $_COOKIE['user_id'];
+
+//check if the user is auth
+if($user_id){
+  //get the user info
+  $auth_user = $user->find($user_id);
+}
+else{
+  //redirect the user to the football
+  header("Location: /hotel_system");
+exit();
+
+}
+
+
+// $all = $user->();
 
 
 
@@ -95,7 +111,7 @@ $all = $user->index();
           <div class="flex gap-2 align-center rounded-border">
             <img class="w-12 h-12 rounded-full user-border" src="../assets/images/profile.jpg" alt="" />
             <div>
-              <h5 class="mt-2 text-sm font-extrabold"><?php echo $all['name']; ?></h5>
+              <h5 class="mt-2 text-sm font-extrabold"><?php echo $auth_user['name']; ?></h5>
               <h5 class="text-xs secondary-text">in-system</h5>
             </div>
           </div>

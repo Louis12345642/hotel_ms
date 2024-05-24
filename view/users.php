@@ -1,12 +1,22 @@
 <?php
-//call the connection variable
-include_once "../database/connection.php";
+include_once "../controller/usersController.php";
 
-$DB = new Db_connection();
-$conn = $DB->connect();
+$user = new userController();
+
+//get the id from cookie
+$user_id = $_COOKIE['user_id'];
+
+//check if the user is auth
+if ($user_id) {
+    //get the user info
+    $auth_user = $user->find($user_id);
+} else {
+    //redirect the user to the football
+    header("Location: /hotel_system");
+    exit();
+}
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -178,6 +188,12 @@ $conn = $DB->connect();
                                 </thead>
                                 <tbody>
                                     <?php
+                                    //call the connection variable
+                                    include_once "../database/connection.php";
+
+                                    $DB = new Db_connection();
+                                    $conn = $DB->connect();
+
                                     $sql = "SELECT * FROM `persons`";
                                     $result = mysqli_query($conn, $sql);
                                     //check whether there are the database

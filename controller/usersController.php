@@ -15,54 +15,65 @@ class userController
 *
 */
 
-    public function index()
+    public function find($id)
     {
+        $user = new User();
+        $authUser = $user->Find($id);
+        return $authUser;
 
-        //call the get users from the user model
-
-
-        return [
-            "name" => "dev"
-        ];
     }
 
-        /*
+    /*
 * store(): this methods stores a new user in the database
 * @return: null
 *
 */
-public function store($name,$email,$password){
-    $user = new User();
-    $user->create($name,$email,$password);
-    echo "user created";     
-}
+    public function store($name, $email, $password)
+    {
+        $user = new User();
+        $user->create($name, $email, $password);
+        echo "user created";
+    }
 
 
-        /*
+    /*
 * delete(): this deletes a user from the database using the id
 * @return: null
 *
 */
 
-public function delete($id){
-    //getting the user instance
-    $user = new User();
-    $user->delete($id);
+    public function delete($id)
+    {
+        //getting the user instance
+        $user = new User();
+        $user->delete($id);
+    }
 
-}
 
 
- 
- /*
+    /*
 * update(): this method updates a user from the database using the id
 * @return: null
 *
 */
-public function update($id,$name,$email,$password){
+    public function update($id, $name, $email, $password)
+    {
 
-    $user = new User();
-    $user->Update($id,$name,$email,$password);
+        $user = new User();
+        $user->Update($id, $name, $email, $password);
+    }
+
+    /*
+* update(): this method updates a user from the database using the id
+* @return: null
+*
+*/
+    public function loginUser($email, $password)
+    {
+
+        $user = new User();
+        //login the user
+        $userpassword = $user->Login($email, $password);
+        return $userpassword;
+    }
 }
-
-}
-

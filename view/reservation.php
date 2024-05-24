@@ -5,6 +5,24 @@ include_once "../database/connection.php";
 $DB = new Db_connection();
 $conn = $DB->connect();
 
+
+include_once "../controller/usersController.php";
+
+$user = new userController();
+
+//get the id from cookie
+$user_id = $_COOKIE['user_id'];
+
+//check if the user is auth
+if ($user_id) {
+    //get the user info
+    $auth_user = $user->find($user_id);
+} else {
+    //redirect the user to the football
+    header("Location: /hotel_system");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -105,7 +123,7 @@ $conn = $DB->connect();
                 <!-- the h4 is for the main title -->
                 <div>
                     <h4 class="pt-6 pl-20 font-extrabold uppercase text-md">
-                    All Reservation
+                        All Reservation
                     </h4>
                 </div>
                 <!-- here is the mini navbar for reports,inproducts etc.. -->
