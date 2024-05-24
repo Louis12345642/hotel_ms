@@ -23,11 +23,11 @@
 
     <h1 class="font-bold text-center mt-20 text-xl">Login to the system</h1>
     <div class="flex justify-center mt-4 ">
-        <form class="in-product-form grid grid-cols-1" action="./routes/l" method="POST">
+        <form class="in-product-form grid grid-cols-1" action="./routes/loginRoute.php" method="POST">
             <label class="text-sm font-extrabold" for="Serial Number">Email</label>
             <input class="text-xs p-1 text-gray-500" type="text" placeholder="Email.." , name="email" />
             <label class="text-sm font-extrabold" for="Quantity">Password</label>
-            <input class="text-xs p-1 text-gray-500" type="text" placeholder="Password..." name="password" />
+            <input class="text-xs p-1 text-gray-500" type="password" placeholder="Password..." name="password" />
 
             <button class="btn-component text-sm text-bold">submit</button>
         </form>

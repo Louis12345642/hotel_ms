@@ -103,4 +103,14 @@ class User
             }
         }
     }
+
+    //this method logs out a user from the system
+    public function Logout()
+    {
+        setcookie("token", "", time() + (2 * 1), "/");
+        setcookie("user_id", "", time() + (2 * 1), "/");
+
+        header("Location: ../index.php");
+        exit();
+    }
 }

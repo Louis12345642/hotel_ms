@@ -76,4 +76,10 @@ class userController
         $userpassword = $user->Login($email, $password);
         return $userpassword;
     }
+
+    //this method logout out a user
+    public function logoutUser(){
+        $user = new User();
+        $user->Logout();
+    }
 }

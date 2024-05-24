@@ -88,9 +88,9 @@ if ($user_id) {
                             </li>
                             <li class="flex items-center gap-y-6 gap-x-2">
                                 <div>
-                                    <img class="w-4 h-4" src="../assets/icons/settings.png" alt="" />
+                                    <img class="w-4 h-4" src="../assets/icons/check-out.png" alt="" />
                                 </div>
-                                settings
+                                <a href="logout.php">Logout</a>
                             </li>
                         </ul>
                     </div>

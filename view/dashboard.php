@@ -7,15 +7,13 @@ $user = new userController();
 $user_id = $_COOKIE['user_id'];
 
 //check if the user is auth
-if($user_id){
+if ($user_id) {
   //get the user info
   $auth_user = $user->find($user_id);
-}
-else{
+} else {
   //redirect the user to the football
   header("Location: /hotel_system");
-exit();
-
+  exit();
 }
 
 
@@ -96,9 +94,9 @@ exit();
               </li>
               <li class="flex items-center gap-y-6 gap-x-2">
                 <div>
-                  <img class="w-4 h-4" src="../assets/icons/settings.png" alt="" />
+                  <img class="w-4 h-4" src="../assets/icons/check-out.png" alt="" />
                 </div>
-                settings
+                <a href="logout.php">Logout</a>
               </li>
             </ul>
           </div>

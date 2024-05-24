@@ -89,9 +89,9 @@ if ($user_id) {
                             </li>
                             <li class="flex items-center gap-y-6 gap-x-2">
                                 <div>
-                                    <img class="w-4 h-4" src="../assets/icons/settings.png" alt="" />
+                                    <img class="w-4 h-4" src="../assets/icons/check-out.png" alt="" />
                                 </div>
-                                settings
+                                <a href="logout.php">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -180,7 +180,7 @@ if ($user_id) {
                         <label class="text-sm font-extrabold" for="Serial Number">Email</label>
                         <input class="text-xs p-1 text-gray-500" type="text" placeholder="Email.." , name="email" />
                         <label class="text-sm font-extrabold" for="Quantity">Password</label>
-                        <input class="text-xs p-1 text-gray-500" type="text" placeholder="Password..." name="password" />
+                        <input class="text-xs p-1 text-gray-500" type="password" placeholder="Password..." name="password" />
 
                         <button class="btn-component text-sm text-bold">submit</button>
                     </form>
