@@ -29,7 +29,7 @@ if ($user_id) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>hotel system</title>
+  <title>Group 10</title>
   <link rel="stylesheet" href="../public/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -110,7 +110,7 @@ if ($user_id) {
             <img class="w-12 h-12 rounded-full user-border" src="../assets/images/profile.jpg" alt="" />
             <div>
               <h5 class="mt-2 text-sm font-extrabold"><?php echo $auth_user['name']; ?></h5>
-              <h5 class="text-xs secondary-text">in-system</h5>
+              <h5 class="text-xs secondary-text">Group 10</h5>
             </div>
           </div>
         </div>

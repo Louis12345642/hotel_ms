@@ -124,8 +124,8 @@ if ($user_id) {
                     <div class="flex gap-2 align-center rounded-border">
                         <img class="w-12 h-12 rounded-full user-border" src="../assets/images/profile.jpg" alt="" />
                         <div>
-                            <h5 class="mt-2 text-sm font-extrabold">Mubarak Louis</h5>
-                            <h5 class="text-xs secondary-text">in-system</h5>
+                            <h5 class="mt-2 text-sm font-extrabold"><?php echo $auth_user['name']; ?></h5>
+                            <h5 class="text-xs secondary-text">Group 10</h5>
                         </div>
                     </div>
                 </div>

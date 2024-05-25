@@ -93,12 +93,15 @@ class User
             //fetch the user as an array
             $user = mysqli_fetch_assoc($result);
             //check if the pasword is the same
-            if ($password == $user['password']) {
+
+            if (password_verify($password,$user['password'])) {
                 // Setting a cookie
                 setcookie("token", "user", time() + (86400 * 30), "/");
                 setcookie("user_id", $user['id'], time() + (86400 * 30), "/");
             } else {
-                header("Location: ../index.php");
+
+                setcookie("login_error", "invalid user name or password", time() + (2 * 2), "/");
+                header("Location: ../login.php");
                 exit();
             }
         }

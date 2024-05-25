@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -237,7 +241,7 @@
                         </div>
                         <h6 class="text-sm">Group Ten 5 Star Hotel</h6>
                         <h6 class="text-sm">
-                        Get exclusive hotel rooms reservation and the most delicious food around the globe.
+                            Get exclusive hotel rooms reservation and the most delicious food around the globe.
                         </h6>
                         <div class="flex gap-4">
                             <h6 class="rating">7.9/306k</h6>
@@ -274,7 +278,7 @@
                                     <a class="text-sm" href="#">West African Food</a>
                                     <div class="shadow-md border-link"></div>
                                 </li>
-                          
+
                             </div>
                         </ul>
 

@@ -28,7 +28,7 @@ if ($email =="" || $name == "" || $password=="") {
     $user->store($name, $email, $password);
 
     //send the success as message
-    setcookie("success", $success, time() + (86400 * 30), "/");
+    setcookie("success", $success, time() + (1 * 2), "/");
     header("Location: ../view/users.php");
     exit();
 }

@@ -30,10 +30,16 @@ class userController
 */
     public function store($name, $email, $password)
     {
+        //hash the password
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 
         $user = new User();
-        $user->create($name, $email, $password);
+        $user->create(
+            $name,
+            $email,
+            $hashedPassword
+        );
     }
 
 
