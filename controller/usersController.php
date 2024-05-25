@@ -9,6 +9,7 @@ include_once "../model/User.php";
 
 class userController
 {
+
     /*
 * index(): this methods gets all the users from the database 
 * @return: json object
@@ -20,7 +21,6 @@ class userController
         $user = new User();
         $authUser = $user->Find($id);
         return $authUser;
-
     }
 
     /*
@@ -30,9 +30,10 @@ class userController
 */
     public function store($name, $email, $password)
     {
+
+
         $user = new User();
         $user->create($name, $email, $password);
-        echo "user created";
     }
 
 
@@ -78,7 +79,8 @@ class userController
     }
 
     //this method logout out a user
-    public function logoutUser(){
+    public function logoutUser()
+    {
         $user = new User();
         $user->Logout();
     }
